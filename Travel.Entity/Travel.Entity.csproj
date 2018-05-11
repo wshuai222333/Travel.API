@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Travel.DDD\Travel.DDD.csproj" />
+    <ProjectReference Include="..\Travel.Repositories.EF\Travel.Repositories.EF.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Web">
+      <HintPath>System.Web</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
