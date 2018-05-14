@@ -1,4 +1,5 @@
 ﻿using Travel.DDD.IRepositories;
+using Travel.Entity.CGTLOGModels;
 using Travel.Entity.CGTModels;
 using Travel.Entity.EFRepositories;
 
@@ -16,9 +17,9 @@ namespace Travel.Entity {
         #endregion
 
         #region 日志
-        //protected readonly CgtLogContext cgtLogContext;
-        //public readonly IExtensionRepository<ApiNotifyLog> apiNotifyLog;
-        //public readonly IExtensionRepository<Tranfer_Logs> tranfer_logs;
+        protected readonly cgt_logContext cgtLogContext;
+        public readonly IExtensionRepository<AliCheckTicketLog> aliCheckTicketLog;
+       
 
         #endregion
 
@@ -31,13 +32,13 @@ namespace Travel.Entity {
 
            
             interfaceAccount = new CgtEfRepository<InterfaceAccount>(db);
-          
+
             #endregion
             #region cgt_log日志库
-            //cgtLogContext = new CgtLogContext();
+            var cgtLogdb = new cgt_logContext();
 
-            //apiNotifyLog = new CgtLogEfRepository<CGT.Entity.CgtLogModel.ApiNotifyLog>(cgtLogContext);
-            //tranfer_logs = new CgtLogEfRepository<Tranfer_Logs>(cgtLogContext);
+            aliCheckTicketLog = new CgtLogEfRepository<AliCheckTicketLog>(cgtLogContext);
+           
 
             #endregion
         }
