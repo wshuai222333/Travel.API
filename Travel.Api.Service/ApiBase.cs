@@ -130,6 +130,7 @@ namespace Travel.Api.Service {
                 LoggerFactory.Instance.Logger_Debug(DebugeInfo.ToString(), "ExecuteMethodError");
                 #endregion
             }
+            this.Result.MerchantId = model.MerchantId;
             //异步锁释放
             //_mutex.Release();
             return Result;

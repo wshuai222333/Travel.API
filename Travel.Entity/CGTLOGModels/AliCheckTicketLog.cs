@@ -12,5 +12,7 @@ namespace Travel.Entity.CGTLOGModels {
         public string ReturnMessage { get; set; }
 
         public int? IsSuccess { get; set; }
+
+        public string MerchantId { get; set; }
     }
 }
