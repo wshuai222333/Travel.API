@@ -27,7 +27,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repositories", "Repositorie
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Travel.Repositories.EF", "Travel.Repositories.EF\Travel.Repositories.EF.csproj", "{C355B556-0838-4814-BF6A-BDBBF6C5561D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelCheckTicketForA.Service", "TravelCheckTicketForA.Service\TravelCheckTicketForA.Service.csproj", "{8E2799FE-152C-44F7-8A13-B0EC5339D445}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelCheckTicketForA.Service", "TravelCheckTicketForA.Service\TravelCheckTicketForA.Service.csproj", "{8E2799FE-152C-44F7-8A13-B0EC5339D445}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Travel.Api.Test", "Travel.Api.Test\Travel.Api.Test.csproj", "{92DF64D8-1A2A-44A2-9176-AAF189D37F1A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +69,10 @@ Global
 		{8E2799FE-152C-44F7-8A13-B0EC5339D445}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E2799FE-152C-44F7-8A13-B0EC5339D445}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E2799FE-152C-44F7-8A13-B0EC5339D445}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92DF64D8-1A2A-44A2-9176-AAF189D37F1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92DF64D8-1A2A-44A2-9176-AAF189D37F1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92DF64D8-1A2A-44A2-9176-AAF189D37F1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92DF64D8-1A2A-44A2-9176-AAF189D37F1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,7 +4,7 @@ using Travel.DDD;
 using Travel.DDD.Config;
 
 namespace TravelCheckTicketForA.Service {
-    public class CheckTicketForAProcessor : ProcessorBase<CheckTicketRequestView> {
+    public class CheckTicketForAProcessor : ProcessorBase<CheckTicketResponseView> {
 
         protected override string RequestAddress {
             get {
