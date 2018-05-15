@@ -53,21 +53,25 @@ namespace Travel.Api.Service.CheckTicket {
         public ResponseCheckTicket CheckTicketForAMessageAnalysis(string Message) {
             //"DETR TN784-2034099152,S\r\n\r\n航空公司电子客票航程通知单\r\n电子客票票号        784-2034099152\r\n后续客票号          NONE\r\n出票航空公司        MIS CAAC\r\n售票处信息          \r\n出票时间/地点       /<>\r\n旅客姓名            李杨\r\n身份识别号码        NONE\r\n票价    货币        CNY  金额   1090.00\r\n实付等值货币        CNY  金额   1090.00    付款方式 CA CASH(CNY)\r\n税款             CNY 50.00CN  CNY EXEMPTYQ\r\n付款总额            CNY 1140.00\r\n";
             try {
-
+                //获取乘机人姓名
                 int Name1 = Message.IndexOf("名"), Name2 = Message.IndexOf("身");
                 if (Name2 <= Name1) {
                     Name2 = Message.LastIndexOf("身");
                 }
                 string name = Message.Substring(Name1 + 1, Name2 - Name1 - 1).Trim();
-
-                //int Price1 = Message.IndexOf("额"), Price2 = Message.IndexOf("实");
-                //if (Price2 <= Price1) {
-                //    Price2 = Message.LastIndexOf("实");
-                //}
-                int Price1 = Message.IndexOf("付款总额");
-
-                string price = Message.Substring(Price1 + 4).Replace("CNY", "").Trim();
-                return new ResponseCheckTicket { Name = name, TotalPrice = price };
+                //获取票面价
+                int Price1 = Message.IndexOf("额"), Price2 = Message.IndexOf("实");
+                if (Price2 <= Price1) {
+                    Price2 = Message.LastIndexOf("实");
+                }
+                string price = Message.Substring(Price1 + 1, Price2 - Price1 - 1).Trim();
+                //获取税款
+                int PriceTax = Message.IndexOf("税款 "),PriceTax1 = Message.IndexOf("EXEMPTYQ");
+                string tax = Message.Substring(PriceTax + 2, PriceTax1- PriceTax-7).Replace("CNY", "").Replace("CN","").Trim();
+                //获取总价
+                int Pricet = Message.IndexOf("付款总额");
+                string totalprice = Message.Substring(Pricet + 4).Replace("CNY", "").Trim();
+                return new ResponseCheckTicket { Name = name, Price = price, Tax = tax, TotalPrice = totalprice };
 
             } catch (Exception ex) {
                 LoggerFactory.Instance.Logger_Debug("A方接口解析报错：" + ex.Message, "CheckTicketForAService");
