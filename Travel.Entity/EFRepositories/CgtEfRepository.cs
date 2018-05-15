@@ -11,7 +11,6 @@ namespace Travel.Entity.EFRepositories {
     public class CgtEfRepository<T> : EFRepository<T> where T : class, IEntity {
         public CgtEfRepository(DbContext db)
             : base(db ?? new cgtContext()) {
-
         }
     }
 }

@@ -11,19 +11,18 @@ namespace Travel.Api.Controllers.CheckTicket {
     [Produces("application/json")]
     [Route("api/CheckTicket")]
     [EnableCors("AllowSameDomain")]
-    public class CheckTicketController:BaseController {
+    public class CheckTicketController : BaseController {
         #region 注入服务
         public CheckTicketService checkTicketService { get; set; }
-
         #endregion
         /// <summary>
         /// 验票
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [Route("CheckTicket"), HttpPost]
-        public async Task<ResponseMessageModel> QueryStaffList([FromBody]RequestModel model) {
-            return await Task.Run(() => checkTicketService.Execute(model));
-        }
+        //[Route("CheckTicket"), HttpPost]
+        //public async Task<ResponseMessageModel> CheckTicket([FromBody]RequestModel model) {
+        //    //return await Task.Run(() => checkTicketService.ExecuteMethod(model));
+        //}
     }
 }
