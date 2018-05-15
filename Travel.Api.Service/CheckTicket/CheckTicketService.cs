@@ -5,18 +5,18 @@ using Travel.Entity.CGTLOGModels;
 using TravelCheckTicketForA.Service;
 
 namespace Travel.Api.Service.CheckTicket {
-    public class CheckTicketService: ApiBase<RequestCheckTicket> {
-        
-        public CheckTicketForAProcessor checkTicketForAProcessor { get; set; }
+    public class CheckTicketService : ApiBase<RequestCheckTicket> {
 
+        public CheckTicketForAProcessor checkTicketForAProcessor { get; set; }
         /// <summary>
         /// 执行方法
         /// </summary>
         protected override void ExecuteMethod() {
             var checkTicketRequestView = new CheckTicketRequestView() {
-                RequestTime =this.Parameter.RequestTime,
+                RequestTime = this.Parameter.RequestTime,
                 TikcetNo = this.Parameter.TicketNumber
             };
+            //调取票号数据
             checkTicketForAProcessor.Init(checkTicketRequestView);
             var execResult = checkTicketForAProcessor.Execute();
 
@@ -33,6 +33,7 @@ namespace Travel.Api.Service.CheckTicket {
             aliCheckTicketLog.Insert(_AliCheckTicketLog);
             #endregion
 
+            //返回票号结果
             if (execResult.Success) {
                 this.Result.Data = execResult.Result;
             } else {

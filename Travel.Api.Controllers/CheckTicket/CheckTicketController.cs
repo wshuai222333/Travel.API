@@ -20,9 +20,9 @@ namespace Travel.Api.Controllers.CheckTicket {
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        //[Route("CheckTicket"), HttpPost]
-        //public async Task<ResponseMessageModel> CheckTicket([FromBody]RequestModel model) {
-        //    //return await Task.Run(() => checkTicketService.ExecuteMethod(model));
-        //}
+        [Route("CheckTicket"), HttpPost]
+        public async Task<ResponseMessageModel> CheckTicket([FromBody]RequestModel model) {
+            return await Task.Run(() => checkTicketService.Execute(model));
+        }
     }
 }
