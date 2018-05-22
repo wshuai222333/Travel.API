@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Travel.DDD.Config;
 
 namespace Travel.Entity.CGTLOGModels
 {
@@ -27,7 +28,7 @@ namespace Travel.Entity.CGTLOGModels
             if (!optionsBuilder.IsConfigured)
             {
 
-                optionsBuilder.UseSqlServer(@"Data Source=182.92.4.68;Initial Catalog=cgt_log;MultipleActiveResultSets=True;user id=tonglei;password=reapal!tonglei;");
+                optionsBuilder.UseSqlServer(JsonConfig.JsonRead("cgtLogConnection"));
             }
         }
 

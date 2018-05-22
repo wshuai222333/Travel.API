@@ -6,6 +6,8 @@ namespace Travel.Api.DTO.CheckTicket.Request {
         [Required(ErrorMessage = "必须填写")]
         public string TicketNumber { get; set; }
         [Required(ErrorMessage = "必须填写")]
+        public string Name { get; set; }
+        [Required(ErrorMessage = "必须填写")]
         public DateTime RequestTime { get; set; }
     }
 }

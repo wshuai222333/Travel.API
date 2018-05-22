@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Travel.DDD.Config;
 
 namespace Travel.Entity.CGTModels {
     public partial class cgtContext : DbContext {
@@ -165,7 +166,7 @@ namespace Travel.Entity.CGTModels {
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
             if (!optionsBuilder.IsConfigured) {
-                optionsBuilder.UseSqlServer(@"Data Source=182.92.4.68;Initial Catalog=cgt;MultipleActiveResultSets=True;user id=tonglei;password=reapal!tonglei;");
+                optionsBuilder.UseSqlServer(JsonConfig.JsonRead("cgtConnection"));
             }
         }
 
