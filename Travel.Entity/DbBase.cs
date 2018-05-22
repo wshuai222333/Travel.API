@@ -1,4 +1,5 @@
 ﻿using Travel.DDD.IRepositories;
+using Travel.Entity.CGTALIModels;
 using Travel.Entity.CGTLOGModels;
 using Travel.Entity.CGTModels;
 using Travel.Entity.EFRepositories;
@@ -19,7 +20,14 @@ namespace Travel.Entity {
         #region 日志
         protected readonly cgt_logContext cgtLogContext;
         public readonly IExtensionRepository<AliCheckTicketLog> aliCheckTicketLog;
-       
+
+
+        #endregion
+
+        #region 阿里
+        protected readonly cgt_aliContext cgt_aliContext;
+        public readonly IExtensionRepository<AliEnterpriseOrder> aliEnterpriseOrder;
+
 
         #endregion
 
@@ -38,7 +46,15 @@ namespace Travel.Entity {
             var cgtLogdb = new cgt_logContext();
 
             aliCheckTicketLog = new CgtLogEfRepository<AliCheckTicketLog>(cgtLogContext);
-           
+
+
+            #endregion
+
+            #region cgt_ali日志库
+            var cgtAlidb = new cgt_aliContext();
+
+            aliEnterpriseOrder = new CgtAliEfRepository<AliEnterpriseOrder>(cgt_aliContext);
+
 
             #endregion
         }
