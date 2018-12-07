@@ -4,14 +4,12 @@ using Microsoft.Extensions.Configuration;
 using System.IO;
 
 namespace Travel.Api {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            BuildWebHost(args).Run();
+    public class Program {
+        public static void Main(string[] args) {
+            CreateWebHostBuilder(args).Build().Run();
         }
 
-        public static IWebHost BuildWebHost(string[] args) =>
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
             .UseKestrel()
             .ConfigureAppConfiguration((builderContext, config) => {
@@ -25,7 +23,6 @@ namespace Travel.Api {
             .UseContentRoot(Directory.GetCurrentDirectory())
             .UseIISIntegration()
             .UseStartup<Startup>()
-            .UseUrls("http://*:7002")
-            .Build();
+            .UseUrls("http://*:7002");
     }
 }

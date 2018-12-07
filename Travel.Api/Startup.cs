@@ -91,8 +91,12 @@ namespace Travel.Api {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
             }
+
+#pragma warning disable CS0618 // Type or member is obsolete
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+#pragma warning restore CS0618 // Type or member is obsolete
+
             CGTHttpContext.ServiceProvider = svp;
             app.UseCors("AllowSameDomain");
             app.UseStaticFiles();

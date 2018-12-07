@@ -41,13 +41,13 @@ namespace Travel.DDD
         /// <param name="key"></param>
         /// <returns></returns>
         public static string AESEecrypt(string data, string key) {
-            byte[] keyArray = UTF8Encoding.UTF8.GetBytes(key);
-            byte[] toEncryptArray = UTF8Encoding.UTF8.GetBytes(data);
+            byte[] keyArray = Encoding.UTF8.GetBytes(key);
+            byte[] toEncryptArray = Encoding.UTF8.GetBytes(data);
             var aes = Aes.Create();
             aes.Key = keyArray;
             aes.Mode = CipherMode.ECB;
             aes.Padding = PaddingMode.PKCS7;
-            var cipher = aes.CreateEncryptor(UTF8Encoding.UTF8.GetBytes(key), UTF8Encoding.UTF8.GetBytes(key));
+            var cipher = aes.CreateEncryptor(Encoding.UTF8.GetBytes(key), Encoding.UTF8.GetBytes(key));
             var result_byte = cipher.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
             var datastr = Convert.ToBase64String(result_byte);
             return datastr;
@@ -62,10 +62,10 @@ namespace Travel.DDD
             var aes = Aes.Create();
             aes.Mode = CipherMode.ECB;
             aes.Padding = PaddingMode.PKCS7;
-            var cipher = aes.CreateDecryptor(UTF8Encoding.UTF8.GetBytes(key), UTF8Encoding.UTF8.GetBytes(key));
+            var cipher = aes.CreateDecryptor(Encoding.UTF8.GetBytes(key), Encoding.UTF8.GetBytes(key));
             var databyte = Convert.FromBase64String(data);
             var result_byte = cipher.TransformFinalBlock(databyte, 0, databyte.Length);
-            var strResult = UTF8Encoding.UTF8.GetString(result_byte);
+            var strResult = Encoding.UTF8.GetString(result_byte);
             return strResult;
         }
         /// <summary>
@@ -76,7 +76,7 @@ namespace Travel.DDD
         /// <param name="pwd"></param>
         /// <returns></returns>
         public static string RSAEcrypt(string data, string address) {
-            byte[] DataToEncrypt = UTF8Encoding.UTF8.GetBytes(data);
+            byte[] DataToEncrypt = Encoding.UTF8.GetBytes(data);
             X509Certificate2 cer = new X509Certificate2(address);
             var rsa = cer.GetRSAPublicKey();
             var result_byte = rsa.Encrypt(DataToEncrypt, RSAEncryptionPadding.Pkcs1);
@@ -98,8 +98,8 @@ namespace Travel.DDD
                 var rsa = cer.GetRSAPrivateKey();
                 data_byte = Convert.FromBase64String(data);
                 var result_byte = rsa.Decrypt(data_byte, RSAEncryptionPadding.Pkcs1);
-                strResult = UTF8Encoding.UTF8.GetString(result_byte);
-            } catch (Exception ex) {
+                strResult = Encoding.UTF8.GetString(result_byte);
+            } catch{
 
             }
             return strResult;
@@ -138,13 +138,13 @@ namespace Travel.DDD
             }
             byte[] byData = new byte[ret.ToString().Length / 2];
             for (int x = 0; x < ret.ToString().Length / 2; x++) {
-                int i = (Convert.ToInt32(ret.ToString().Substring(x * 2, 2), 16));
+                int i = Convert.ToInt32(ret.ToString().Substring(x * 2, 2), 16);
                 byData[x] = (byte)i;
             }
             byte[] byKey = Encoding.ASCII.GetBytes(key);
             byte[] byVI = Encoding.ASCII.GetBytes(vi);
             BufferedBlockCipher cipher = new PaddedBufferedBlockCipher(new CbcBlockCipher(engine));
-            cipher.Init(false, new Org.BouncyCastle.Crypto.Parameters.ParametersWithIV(new DesParameters(byKey), byVI));
+            cipher.Init(false, new ParametersWithIV(new DesParameters(byKey), byVI));
             byte[] rv = new byte[cipher.GetOutputSize(byData.Length)];
             int tam = cipher.ProcessBytes(byData, 0, byData.Length, rv, 0);
             cipher.DoFinal(rv, tam);

@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Travel.DDD.Utils.Http {
     public static class StaticHttpContextExtensions {
-        public static void AddHttpContextAccessor(this IServiceCollection services) {
+        public static void AddHttpContextAccessors(this IServiceCollection services) {
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
