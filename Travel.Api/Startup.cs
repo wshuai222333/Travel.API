@@ -75,7 +75,7 @@ namespace Travel.Api {
 
             autofac.RegisterModule(new AutofacModule());
             autofac.Populate(services);
-            this.ApplicationContainer = autofac.Build();
+            ApplicationContainer = autofac.Build();
             #endregion
 
             #region AutoMapper
@@ -83,7 +83,7 @@ namespace Travel.Api {
             #endregion
             //设置支持gb2312
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            return new AutofacServiceProvider(this.ApplicationContainer);
+            return new AutofacServiceProvider(ApplicationContainer);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
